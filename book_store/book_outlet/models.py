@@ -6,10 +6,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Book(models.Model):
     title = models.CharField(max_length=40)
     rating = models.IntegerField(
-        default = 1,
-        validators= [
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    author = models.CharField(max_length=40)
+    is_bestselling = models.BooleanField()
     
+    def __str__(self):
+        return f"{self.title} ({self.rating})"
