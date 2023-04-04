@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.utils.text import slugify
 # Create your models here.
 
+# Book class with attributes
+
 class Book(models.Model):
     title = models.CharField(max_length=40)
     rating = models.IntegerField(
