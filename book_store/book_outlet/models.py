@@ -4,6 +4,11 @@ from django.urls import reverse
 from django.utils.text import slugify
 # Create your models here.
 
+class Address(models.Model):
+    street = models.CharField(max_length=80)
+    postal_code = models.CharField(max_length=5)
+    city = models.CharField(max_length=50)
+
 # Author class with attributes
 
 class Author(models.Model):
