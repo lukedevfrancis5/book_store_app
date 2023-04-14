@@ -2,14 +2,26 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse 
 from django.utils.text import slugify
+
+
 # Create your models here.
+
+
+# Address class with attributes and functions
 
 class Address(models.Model):
     street = models.CharField(max_length=80)
     postal_code = models.CharField(max_length=5)
     city = models.CharField(max_length=50)
 
-# Author class with attributes
+    def __str__(self):
+        return f"{self.street}, {self.postal_code}, {self.city}"
+    
+    class Meta:
+        verbose_name_plural = "Address Entries"
+
+
+# Author class with attributes and functions
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
@@ -21,10 +33,10 @@ class Author(models.Model):
         return f"{self.first_name} {self.last_name}"
     
     def __str__(self):
-        return self.full_name()
+        return self.full_name() 
 
 
-# Book class with attributes
+# Book class with attributes and functions
 
 class Book(models.Model):
     title = models.CharField(max_length=40)
